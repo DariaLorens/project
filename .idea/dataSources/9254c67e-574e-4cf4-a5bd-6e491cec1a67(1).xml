@@ -1,0 +1,415 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataSource name="project@localhost">
+  <database-model serializer="dbm" rdbms="MYSQL" format-version="4.4">
+    <root id="1"/>
+    <schema id="2" parent="1" name="project">
+      <Current>1</Current>
+      <Visible>1</Visible>
+    </schema>
+    <schema id="3" parent="1" name="information_schema"/>
+    <schema id="4" parent="1" name="mysql"/>
+    <schema id="5" parent="1" name="performance_schema"/>
+    <schema id="6" parent="1" name="sys"/>
+    <schema id="7" parent="1" name="mebel"/>
+    <schema id="8" parent="1" name="test"/>
+    <table id="9" parent="2" name="doc">
+      <Comment>Все документы хранящиеся в базе</Comment>
+    </table>
+    <table id="10" parent="2" name="dogovor">
+      <Comment>информация по договору</Comment>
+    </table>
+    <table id="11" parent="2" name="project">
+      <Comment>Информация о проектах</Comment>
+    </table>
+    <table id="12" parent="2" name="project_sotrudnik">
+      <Comment>Таблица, необходимая для реализации связи &quot;многие ко многим&quot; для таблиц &quot;сотрудники&quot; и &quot;проекты&quot;</Comment>
+    </table>
+    <table id="13" parent="2" name="sotrudnik">
+      <Comment>Таблица, содержащая информацию о сотрудниках</Comment>
+    </table>
+    <table id="14" parent="2" name="status">
+      <Comment>Статусы проекта</Comment>
+    </table>
+    <table id="15" parent="2" name="tip_doc">
+      <Comment>Таблица типов документа</Comment>
+    </table>
+    <table id="16" parent="2" name="tip_status"/>
+    <table id="17" parent="2" name="tip_user">
+      <Comment>Типы пользователей</Comment>
+    </table>
+    <table id="18" parent="2" name="user">
+      <Comment>Таблица, содержащая информацию о пользователях</Comment>
+    </table>
+    <table id="19" parent="2" name="zakazchik">
+      <Comment>Таблица, содержащая информацию о заказчиках</Comment>
+    </table>
+    <column id="20" parent="9" name="iddoc">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="21" parent="9" name="idproject">
+      <Position>2</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="22" parent="9" name="nazvanie">
+      <Position>3</Position>
+      <DataType>varchar(45)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="23" parent="9" name="nomer">
+      <Position>4</Position>
+      <DataType>varchar(45)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="24" parent="9" name="put">
+      <Position>5</Position>
+      <DataType>varchar(150)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="25" parent="9" name="idtip_doc">
+      <Position>6</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="26" parent="9" name="ididproject3_idx">
+      <ColNames>idproject</ColNames>
+    </index>
+    <index id="27" parent="9" name="idproject2_idx">
+      <ColNames>idproject</ColNames>
+    </index>
+    <index id="28" parent="9" name="idtip_doc_idx">
+      <ColNames>idtip_doc</ColNames>
+    </index>
+    <key id="29" parent="9" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>iddoc</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="30" parent="9" name="ididproject3">
+      <ColNames>idproject</ColNames>
+      <RefSchemaName>project</RefSchemaName>
+      <RefTableName>project</RefTableName>
+      <RefColNames>idproject</RefColNames>
+    </foreign-key>
+    <foreign-key id="31" parent="9" name="idtip_doc">
+      <ColNames>idtip_doc</ColNames>
+      <RefSchemaName>project</RefSchemaName>
+      <RefTableName>tip_doc</RefTableName>
+      <RefColNames>idtip_doc</RefColNames>
+    </foreign-key>
+    <column id="32" parent="10" name="iddogovor">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="33" parent="10" name="data">
+      <Position>2</Position>
+      <DataType>date|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="34" parent="10" name="nomer">
+      <Position>3</Position>
+      <DataType>varchar(20)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="35" parent="10" name="idzakazchik">
+      <Position>4</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="36" parent="10" name="idzakazchik2_idx">
+      <ColNames>idzakazchik</ColNames>
+    </index>
+    <index id="37" parent="10" name="idzakazchik_idx">
+      <ColNames>idzakazchik</ColNames>
+    </index>
+    <key id="38" parent="10" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>iddogovor</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="39" parent="10" name="idzakazchik2">
+      <ColNames>idzakazchik</ColNames>
+      <RefSchemaName>project</RefSchemaName>
+      <RefTableName>zakazchik</RefTableName>
+      <RefColNames>idzakazchik</RefColNames>
+    </foreign-key>
+    <column id="40" parent="11" name="idproject">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="41" parent="11" name="nazvanie">
+      <Position>2</Position>
+      <DataType>varchar(45)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="42" parent="11" name="kod">
+      <Position>3</Position>
+      <DataType>varchar(45)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="43" parent="11" name="put">
+      <Position>4</Position>
+      <DataType>varchar(150)|0</DataType>
+    </column>
+    <column id="44" parent="11" name="ryad">
+      <Position>5</Position>
+      <DataType>char(10)|0</DataType>
+    </column>
+    <column id="45" parent="11" name="stolb">
+      <Position>6</Position>
+      <DataType>char(10)|0</DataType>
+    </column>
+    <column id="46" parent="11" name="polka">
+      <Position>7</Position>
+      <DataType>varchar(10)|0</DataType>
+    </column>
+    <column id="47" parent="11" name="comment">
+      <Position>8</Position>
+      <DataType>varchar(200)|0</DataType>
+    </column>
+    <column id="48" parent="11" name="idstatus">
+      <Position>9</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="49" parent="11" name="iddogovor">
+      <Position>10</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="50" parent="11" name="idstatus_idx">
+      <ColNames>idstatus</ColNames>
+    </index>
+    <index id="51" parent="11" name="iddogovor_idx">
+      <ColNames>iddogovor</ColNames>
+    </index>
+    <key id="52" parent="11" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>idproject</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="53" parent="11" name="idstatus">
+      <ColNames>idstatus</ColNames>
+      <RefSchemaName>project</RefSchemaName>
+      <RefTableName>status</RefTableName>
+      <RefColNames>idstatus</RefColNames>
+    </foreign-key>
+    <foreign-key id="54" parent="11" name="iddogovor">
+      <ColNames>iddogovor</ColNames>
+      <RefSchemaName>project</RefSchemaName>
+      <RefTableName>dogovor</RefTableName>
+      <RefColNames>iddogovor</RefColNames>
+    </foreign-key>
+    <column id="55" parent="12" name="idsotrProject">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="56" parent="12" name="idproject">
+      <Position>2</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="57" parent="12" name="idsotrudnik">
+      <Position>3</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="58" parent="12" name="idproject_idx">
+      <ColNames>idproject</ColNames>
+    </index>
+    <index id="59" parent="12" name="idsotr_idx">
+      <ColNames>idsotrudnik</ColNames>
+    </index>
+    <key id="60" parent="12" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>idsotrProject</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="61" parent="12" name="idproject">
+      <ColNames>idproject</ColNames>
+      <RefSchemaName>project</RefSchemaName>
+      <RefTableName>project</RefTableName>
+      <RefColNames>idproject</RefColNames>
+    </foreign-key>
+    <foreign-key id="62" parent="12" name="idsotr">
+      <ColNames>idsotrudnik</ColNames>
+      <RefSchemaName>project</RefSchemaName>
+      <RefTableName>sotrudnik</RefTableName>
+      <RefColNames>idsotrudnik</RefColNames>
+    </foreign-key>
+    <column id="63" parent="13" name="idsotrudnik">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="64" parent="13" name="name">
+      <Position>2</Position>
+      <DataType>varchar(45)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="65" parent="13" name="fam">
+      <Position>3</Position>
+      <DataType>varchar(45)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="66" parent="13" name="otch">
+      <Position>4</Position>
+      <DataType>varchar(45)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <key id="67" parent="13" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>idsotrudnik</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="68" parent="14" name="idstatus">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="69" parent="14" name="nazvanie">
+      <Position>2</Position>
+      <DataType>varchar(10)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <key id="70" parent="14" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>idstatus</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="71" parent="15" name="idtip_doc">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="72" parent="15" name="nazvanie">
+      <Position>2</Position>
+      <DataType>varchar(45)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <key id="73" parent="15" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>idtip_doc</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="74" parent="16" name="idtipstatus">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="75" parent="16" name="nazvanie">
+      <Position>2</Position>
+      <DataType>varchar(45)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <key id="76" parent="16" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>idtipstatus</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="77" parent="17" name="id_tip">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="78" parent="17" name="nazvanie">
+      <Position>2</Position>
+      <DataType>varchar(20)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <key id="79" parent="17" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id_tip</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="80" parent="18" name="iduser">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="81" parent="18" name="login">
+      <Position>2</Position>
+      <DataType>varchar(100)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="82" parent="18" name="pass">
+      <Position>3</Position>
+      <DataType>varchar(100)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="83" parent="18" name="idsotrudnik">
+      <Position>4</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="84" parent="18" name="id_tip">
+      <Position>5</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="85" parent="18" name="idsotrudnik_idx">
+      <ColNames>idsotrudnik</ColNames>
+    </index>
+    <index id="86" parent="18" name="id_tip_idx">
+      <ColNames>id_tip</ColNames>
+    </index>
+    <key id="87" parent="18" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>iduser</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="88" parent="18" name="idsotrudnik">
+      <ColNames>idsotrudnik</ColNames>
+      <RefSchemaName>project</RefSchemaName>
+      <RefTableName>sotrudnik</RefTableName>
+      <RefColNames>idsotrudnik</RefColNames>
+    </foreign-key>
+    <foreign-key id="89" parent="18" name="id_tip">
+      <ColNames>id_tip</ColNames>
+      <RefSchemaName>project</RefSchemaName>
+      <RefTableName>tip_user</RefTableName>
+      <RefColNames>id_tip</RefColNames>
+    </foreign-key>
+    <column id="90" parent="19" name="idzakazchik">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="91" parent="19" name="nazvanie">
+      <Position>2</Position>
+      <DataType>varchar(100)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="92" parent="19" name="yr_adres">
+      <Position>3</Position>
+      <DataType>varchar(100)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="93" parent="19" name="inn">
+      <Position>4</Position>
+      <DataType>char(12)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <key id="94" parent="19" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>idzakazchik</ColNames>
+      <Primary>1</Primary>
+    </key>
+  </database-model>
+</dataSource>
